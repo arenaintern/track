@@ -292,9 +292,8 @@
             document.getElementById('studentName').innerText = student.name;
             document.getElementById('studentEmail').innerText = student.email || student.fb;
             
-            // আইডি জেনারেশন
-            const emailPrefix = student.email ? student.email.split('@')[0] : (student.fb ? student.fb : "USER");
-            document.getElementById('studentId').innerText = "#AWT-" + emailPrefix.toUpperCase();
+            // ইমেইল প্রিফিক্স বাদ দিয়ে পুনরায় ৪ অঙ্কের র‍্যান্ডম আইডি জেনারেশন
+document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Math.random() * 9000);
             
             // টাস্ক ক্যালকুলেশন
             const taskCount = parseInt(student.tasks) || 0;
@@ -363,3 +362,4 @@
        
 </body>
 </html>
+
