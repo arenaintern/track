@@ -269,12 +269,10 @@
     const resultCard = document.getElementById('resultCard');
     const notFoundMsg = document.getElementById('notFoundMsg');
     
-    // UI Loading State
     const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> খুঁজছে...';
     btn.disabled = true;
     
-    // Hide previous results
     resultCard.classList.add('hidden');
     resultCard.classList.remove('opacity-100', 'translate-y-0');
     notFoundMsg.classList.add('hidden');
@@ -283,6 +281,7 @@
         const response = await fetch(DB_URL);
         const data = await response.json();
 
+        // ইউজার খুঁজে বের করা
         const student = data.find(s => 
             (s.email && String(s.email).toLowerCase() === inputVal) || 
             (s.fb && String(s.fb).toLowerCase() === inputVal)
@@ -292,10 +291,11 @@
             document.getElementById('studentName').innerText = student.name;
             document.getElementById('studentEmail').innerText = student.email || student.fb;
             
-            // ইমেইল প্রিফিক্স বাদ দিয়ে পুনরায় ৪ অঙ্কের র‍্যান্ডম আইডি জেনারেশন
-document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Math.random() * 9000);
+            // --- স্থায়ী আইডি লজিক ---
+            // এখানে student.id আপনার গুগল শিটের 'id' কলাম থেকে ডাটা নিবে
+            const studentIdValue = student.id || "0000"; 
+            document.getElementById('studentId').innerText = "#AWT-" + studentIdValue;
             
-            // টাস্ক ক্যালকুলেশন
             const taskCount = parseInt(student.tasks) || 0;
             document.getElementById('completedTasks').innerText = taskCount;
             
@@ -303,7 +303,7 @@ document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Mat
             const percentage = Math.min(Math.round((taskCount / totalTasks) * 100), 100);
             const remaining = Math.max(totalTasks - taskCount, 0);
             
-            // --- ৬০ কর্মঘন্টা লজিক ---
+            // অবশিষ্ট দিন বনাম ৬০ কর্মঘন্টা লজিক
             const remainingLabel = document.getElementById('remainingLabel');
             const remainingDaysDisplay = document.getElementById('remainingDays');
 
@@ -314,11 +314,11 @@ document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Mat
                 remainingLabel.innerText = "অবশিষ্ট দিন";
                 remainingDaysDisplay.innerText = remaining;
             }
-            // -----------------------
 
             document.getElementById('progressText').innerText = percentage + "%";
             document.getElementById('progressBar').style.width = percentage + "%";
 
+            // সাসপেনশন লজিক
             const isSuspended = String(student.suspended).toLowerCase() === "true";
             const statusBadge = document.getElementById('statusBadge');
             const suspMsg = document.getElementById('suspensionMessage');
@@ -352,7 +352,7 @@ document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Mat
 
     } catch (error) {
         console.error('API Error:', error);
-        alert("সার্ভারে সমস্যা হচ্ছে। একটু পরে আবার চেষ্টা করুন।");
+        alert("সার্ভারে সমস্যা হচ্ছে। গুগল শিটের সাথে কানেকশন চেক করুন।");
     } finally {
         btn.innerHTML = originalText;
         btn.disabled = false;
@@ -362,4 +362,3 @@ document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Mat
        
 </body>
 </html>
-
