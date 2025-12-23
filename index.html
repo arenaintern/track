@@ -211,9 +211,9 @@
                             <p class="text-3xl font-bold text-blue-600 mt-1"><span id="completedTasks">0</span><span class="text-base text-gray-400">/14</span></p>
                         </div>
                         <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-100">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">অবশিষ্ট দিন</p>
-                            <p class="text-3xl font-bold text-purple-600 mt-1" id="remainingDays">14</p>
-                        </div>
+    <p class="text-xs text-gray-500 uppercase font-semibold" id="remainingLabel">অবশিষ্ট দিন</p>
+    <p class="text-3xl font-bold text-purple-600 mt-1" id="remainingDays">0</p>
+</div>
                     </div>
 
                     <div class="mb-2">
@@ -262,98 +262,104 @@
     // ==========================================
 
     async function handleSearch(e) {
-        e.preventDefault();
-        
-        const btn = e.target.querySelector('button[type="submit"]');
-        const inputVal = document.getElementById('searchInput').value.trim().toLowerCase();
-        const resultCard = document.getElementById('resultCard');
-        const notFoundMsg = document.getElementById('notFoundMsg');
-        
-        // UI Loading State
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> খুঁজছে...';
-        btn.disabled = true;
-        
-        // Hide previous results
-        resultCard.classList.add('hidden');
-        resultCard.classList.remove('opacity-100', 'translate-y-0');
-        notFoundMsg.classList.add('hidden');
+    e.preventDefault();
+    
+    const btn = e.target.querySelector('button[type="submit"]');
+    const inputVal = document.getElementById('searchInput').value.trim().toLowerCase();
+    const resultCard = document.getElementById('resultCard');
+    const notFoundMsg = document.getElementById('notFoundMsg');
+    
+    // UI Loading State
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> খুঁজছে...';
+    btn.disabled = true;
+    
+    // Hide previous results
+    resultCard.classList.add('hidden');
+    resultCard.classList.remove('opacity-100', 'translate-y-0');
+    notFoundMsg.classList.add('hidden');
 
-        try {
-            // SheetDB থেকে সব ডেটা নিয়ে আসা
-            const response = await fetch(DB_URL);
-            const data = await response.json();
+    try {
+        const response = await fetch(DB_URL);
+        const data = await response.json();
 
-            // স্টুডেন্ট খুঁজে বের করা
-            const student = data.find(s => 
-                (s.email && String(s.email).toLowerCase() === inputVal) || 
-                (s.fb && String(s.fb).toLowerCase() === inputVal)
-            );
+        const student = data.find(s => 
+            (s.email && String(s.email).toLowerCase() === inputVal) || 
+            (s.fb && String(s.fb).toLowerCase() === inputVal)
+        );
 
-            if (student) {
-                // নাম এবং ইমেইল সেট করা
-                document.getElementById('studentName').innerText = student.name;
-                document.getElementById('studentEmail').innerText = student.email || student.fb;
-                document.getElementById('studentId').innerText = "#AWT-" + Math.floor(1000 + Math.random() * 9000); 
-                
-                // টাস্ক সংখ্যা এবং প্রগ্রেস ক্যালকুলেশন
-                const taskCount = parseInt(student.tasks) || 0;
-                document.getElementById('completedTasks').innerText = taskCount;
-                
-                const totalTasks = 14;
-                const percentage = Math.min(Math.round((taskCount / totalTasks) * 100), 100);
-                const remaining = Math.max(totalTasks - taskCount, 0);
-                
-                document.getElementById('remainingDays').innerText = remaining;
-                document.getElementById('progressText').innerText = percentage + "%";
-                document.getElementById('progressBar').style.width = percentage + "%";
+        if (student) {
+            document.getElementById('studentName').innerText = student.name;
+            document.getElementById('studentEmail').innerText = student.email || student.fb;
+            
+            // আইডি জেনারেশন
+            const emailPrefix = student.email ? student.email.split('@')[0] : (student.fb ? student.fb : "USER");
+            document.getElementById('studentId').innerText = "#AWT-" + emailPrefix.toUpperCase();
+            
+            // টাস্ক ক্যালকুলেশন
+            const taskCount = parseInt(student.tasks) || 0;
+            document.getElementById('completedTasks').innerText = taskCount;
+            
+            const totalTasks = 14;
+            const percentage = Math.min(Math.round((taskCount / totalTasks) * 100), 100);
+            const remaining = Math.max(totalTasks - taskCount, 0);
+            
+            // --- ৬০ কর্মঘন্টা লজিক ---
+            const remainingLabel = document.getElementById('remainingLabel');
+            const remainingDaysDisplay = document.getElementById('remainingDays');
 
-                // সাসপেনশন লজিক (SheetDB তে TRUE/FALSE স্ট্রিং হিসেবে আসতে পারে)
-                const isSuspended = String(student.suspended).toLowerCase() === "true";
-
-                const statusBadge = document.getElementById('statusBadge');
-                const suspMsg = document.getElementById('suspensionMessage');
-                const progressBar = document.getElementById('progressBar');
-
-                // ব্যাজ এবং কালার আপডেট
-                if (isSuspended) {
-                    statusBadge.innerText = "Suspended";
-                    statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-red-100 text-red-700";
-                    suspMsg.classList.remove('hidden');
-                    progressBar.className = "bg-red-500 h-3 rounded-full transition-all duration-1000";
-                } else if (taskCount >= 14) {
-                    statusBadge.innerText = "Completed";
-                    statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-700";
-                    suspMsg.classList.add('hidden');
-                    progressBar.className = "bg-green-500 h-3 rounded-full transition-all duration-1000";
-                } else {
-                    statusBadge.innerText = "Active";
-                    statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-700";
-                    suspMsg.classList.add('hidden');
-                    progressBar.className = "bg-blue-600 h-3 rounded-full transition-all duration-1000";
-                }
-
-                // রেজাল্ট কার্ড দেখানো (এনিমেশন সহ)
-                resultCard.classList.remove('hidden');
-                setTimeout(() => {
-                    resultCard.classList.add('opacity-100', 'translate-y-0');
-                }, 10);
-
+            if (taskCount >= 14) {
+                remainingLabel.innerText = "মোট কর্মঘন্টা";
+                remainingDaysDisplay.innerText = "60+"; 
             } else {
-                notFoundMsg.classList.remove('hidden');
+                remainingLabel.innerText = "অবশিষ্ট দিন";
+                remainingDaysDisplay.innerText = remaining;
+            }
+            // -----------------------
+
+            document.getElementById('progressText').innerText = percentage + "%";
+            document.getElementById('progressBar').style.width = percentage + "%";
+
+            const isSuspended = String(student.suspended).toLowerCase() === "true";
+            const statusBadge = document.getElementById('statusBadge');
+            const suspMsg = document.getElementById('suspensionMessage');
+            const progressBar = document.getElementById('progressBar');
+
+            if (isSuspended) {
+                statusBadge.innerText = "Suspended";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-red-100 text-red-700";
+                suspMsg.classList.remove('hidden');
+                progressBar.className = "bg-red-500 h-3 rounded-full transition-all duration-1000";
+            } else if (taskCount >= 14) {
+                statusBadge.innerText = "Completed";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-700";
+                suspMsg.classList.add('hidden');
+                progressBar.className = "bg-green-500 h-3 rounded-full transition-all duration-1000";
+            } else {
+                statusBadge.innerText = "Active";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-700";
+                suspMsg.classList.add('hidden');
+                progressBar.className = "bg-blue-600 h-3 rounded-full transition-all duration-1000";
             }
 
-        } catch (error) {
-            console.error('API Error:', error);
-            alert("সার্ভারে সমস্যা হচ্ছে। একটু পরে আবার চেষ্টা করুন।");
-        } finally {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            resultCard.classList.remove('hidden');
+            setTimeout(() => {
+                resultCard.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+        } else {
+            notFoundMsg.classList.remove('hidden');
         }
+
+    } catch (error) {
+        console.error('API Error:', error);
+        alert("সার্ভারে সমস্যা হচ্ছে। একটু পরে আবার চেষ্টা করুন।");
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
     }
+}
 </script>
        
 </body>
-
 </html>
-
