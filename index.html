@@ -6,7 +6,6 @@
     <title>Internship Tracker ~ Arena</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/opi82Hp.png">
 
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,7 +43,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: #2563eb; /* Blue instead of Red */
+            background-color: #2563eb;
             border-radius: 2px;
         }
         
@@ -60,196 +59,163 @@
 <body class="text-gray-800 antialiased bg-gray-50">
 
     <div class="bg-gradient-to-r from-[#59acdd] to-[#7a5ea9] text-center py-2 px-4 text-xs md:text-sm font-bold text-white fixed w-full top-0 z-[60] shadow-sm h-auto md:h-10 flex items-center justify-center tracking-wide leading-tight">
-    <span>𝓲 ইন্টার্নশিপের মেয়াদ ১৪ দিন। নিয়মিত আপডেট চেক করুন।</span>
-</div>
-
+        <span>𝓲 ইন্টার্নশিপের মেয়াদ ১৪ দিন। নিয়মিত আপডেট চেক করুন।</span>
+    </div>
 
    <div class="max-w-5xl mx-auto bg-white shadow-xl overflow-hidden mt-8 md:mt-10 relative min-h-screen pb-10 rounded-3xl">
 
-    <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-md px-4 py-3 md:py-4
-    flex justify-between items-center
-    fixed w-full max-w-5xl z-50
-    top-8 md:top-10
-    rounded-b-3xl shadow-lg
-    transition-all duration-300">
-
-        <!-- Logo -->
+    <header class="bg-white/90 backdrop-blur-md px-4 py-3 md:py-4 flex justify-between items-center fixed w-full max-w-5xl z-50 top-8 md:top-10 rounded-b-3xl shadow-lg transition-all duration-300">
         <h2 class="flex items-center">
-            <img 
-                src="aws.png"
-                alt="Arena Web Security Logo"
-                class="h-7 md:h-10"
-            >
+            <img src="aws.png" alt="Arena Web Security Logo" class="h-7 md:h-10">
         </h2>
 
-        <!-- Desktop Button -->
-        <a href="#check-status"
-           class="hidden md:flex items-center justify-center
-           bg-[#60a5fa] text-white px-6 py-2.5 rounded-xl
-           text-sm md:text-base font-bold
-           hover:bg-[#3b82f6]
-           transition shadow-md
-           transform active:scale-95">
+        <a href="#check-status" class="hidden md:flex items-center justify-center bg-[#60a5fa] text-white px-6 py-2.5 rounded-xl text-sm md:text-base font-bold hover:bg-[#3b82f6] transition shadow-md transform active:scale-95">
             স্ট্যাটাস চেক করুন
         </a>
 
-        <!-- Mobile Button -->
-        <a href="#check-status"
-           class="md:hidden flex items-center justify-center
-           text-[#60a5fa] font-bold
-           border border-[#60a5fa]
-           px-4 py-1.5 rounded-lg
-           text-sm
-           hover:bg-[#60a5fa] hover:text-white
-           transition">
+        <a href="#check-status" class="md:hidden flex items-center justify-center text-[#60a5fa] font-bold border border-[#60a5fa] px-4 py-1.5 rounded-lg text-sm hover:bg-[#60a5fa] hover:text-white transition">
             চেক করুন
         </a>
+    </header>
 
-        </header>
+    <div class="text-center bg-gradient-to-b from-blue-50 via-white to-white pb-12 pt-28 md:pt-40 px-4 md:px-8">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-tight">
+            আপনার ইন্টার্নশিপের অগ্রগতি <br> <span class="text-blue-600 inline-block mt-2">লাইভ ট্র্যাকিং</span> করুন
+        </h1>
+        <p class="text-base md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            ফেসবুক নাম বা ইমেইল দিয়ে সার্চ করে দেখে নিন আপনার কমপ্লিট করা টাস্ক সংখ্যা এবং ইন্টার্নশিপ স্ট্যাটাস।
+        </p>
 
-        <div class="text-center bg-gradient-to-b from-blue-50 via-white to-white pb-12 pt-28 md:pt-40 px-4 md:px-8">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-tight">
-                আপনার ইন্টার্নশিপের অগ্রগতি <br> <span class="text-blue-600 inline-block mt-2">লাইভ ট্র্যাকিং</span> করুন
-            </h1>
-            <p class="text-base md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                ফেসবুক নাম বা ইমেইল দিয়ে সার্চ করে দেখে নিন আপনার কমপ্লিট করা টাস্ক সংখ্যা এবং ইন্টার্নশিপ স্ট্যাটাস।
-            </p>
-
-            <div class="relative max-w-lg mx-auto mb-8 group cursor-pointer" onclick="document.getElementById('check-status').scrollIntoView()">
-                <div class="absolute inset-0 bg-blue-500 rounded-2xl rotate-1 opacity-10 transform transition group-hover:rotate-2"></div>
-                <img src="https://i.imgur.com/nWTVTDv.jpeg" alt="Internship Dashboard" class="relative w-full rounded-2xl shadow-xl border-4 border-white transform transition duration-500 group-hover:-translate-y-1">
-                
-                <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white px-4 py-2 rounded-full shadow-lg text-blue-600 font-bold text-xs md:text-sm flex items-center animate-bounce">
-                    <i class="fas fa-check-circle mr-2"></i> রিয়েল-টাইম আপডেট
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center justify-center space-y-4 max-w-md mx-auto">
-                 <a href="#check-status" class="group block w-full max-w-xs mx-auto transform transition duration-300 hover:scale-105 active:scale-95 cursor-pointer">
-                    <div class="bg-[#60a5fa] hover:bg-[#3b82f6] text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 transition-colors">
-    <span class="text-xl font-bold">প্রগ্রেস চেক করুন</span>
-    <i class="fas fa-arrow-down"></i>
-</div>
-
-                </a>
+        <div class="relative max-w-lg mx-auto mb-8 group cursor-pointer" onclick="document.getElementById('check-status').scrollIntoView()">
+            <div class="absolute inset-0 bg-blue-500 rounded-2xl rotate-1 opacity-10 transform transition group-hover:rotate-2"></div>
+            <img src="https://i.imgur.com/nWTVTDv.jpeg" alt="Internship Dashboard" class="relative w-full rounded-2xl shadow-xl border-4 border-white transform transition duration-500 group-hover:-translate-y-1">
+            <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white px-4 py-2 rounded-full shadow-lg text-blue-600 font-bold text-xs md:text-sm flex items-center animate-bounce">
+                <i class="fas fa-check-circle mr-2"></i> রিয়েল-টাইম আপডেট
             </div>
         </div>
 
-        <section class="py-10 px-4 md:px-12 bg-white text-center border-t border-gray-100">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 section-title relative inline-block">ইন্টার্নশিপ গাইডলাইন</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
-                <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
-                        <i class="fas fa-tasks text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-gray-800">দৈনিক টাস্ক</h3>
-                    <p class="text-gray-500 text-sm">অবশ্যই প্রতিদিনের রেকর্ড এবং রিপোর্ট উভয় একটি গুগল ড্রাইভ ফোল্ডারে আপলোড করে রাত বারোটার পূর্বে নির্ধারিত ফর্মে সাবমিট করতে হবে। ১৪ দিনে ১৪টি টাস্ক যথানিয়মে সম্পন্ন করতে হবে।</p>
+        <div class="flex flex-col items-center justify-center space-y-4 max-w-md mx-auto">
+                <a href="#check-status" class="group block w-full max-w-xs mx-auto transform transition duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                <div class="bg-[#60a5fa] hover:bg-[#3b82f6] text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 transition-colors">
+                    <span class="text-xl font-bold">প্রগ্রেস চেক করুন</span>
+                    <i class="fas fa-arrow-down"></i>
                 </div>
+            </a>
+        </div>
+    </div>
 
-                <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
-                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
-                        <i class="fas fa-ban text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-gray-800">সাসপেনশন পলিসি</h3>
-                    <p class="text-gray-500 text-sm">রাত বারোটার পূর্বে বিনা অনুমতিতে টাক্স যথা নিয়মে ফর্মে সাবমিট না করলে অটোমেটিক সাসপেন্ড দেখানো হবে। এছাড়াও প্রতিদিনের মিটিং মিস করলে সাসপেন্ড হওয়ার সম্ভাবনা থাকে।</p>
+    <section class="py-10 px-4 md:px-12 bg-white text-center border-t border-gray-100">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 section-title relative inline-block">ইন্টার্নশিপ গাইডলাইন</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
+            <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                    <i class="fas fa-tasks text-xl"></i>
                 </div>
-
-                <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-600">
-                        <i class="fas fa-certificate text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-gray-800">সত্যায়িত</h3>
-                    <p class="text-gray-500 text-sm">সফলভাবে ১৪ দিনের টাস্ক শেষ করলে এরিনা ওয়েব সিকিউরিটি কর্পোরেট ইন্টার্ন এর সত্যায়িত ছাত্র হিসেবে বিবেচিত হবে।</p>
-                </div>
-            </div>
-        </section>
-
-        <div id="check-status" class="p-4 md:p-12 bg-blue-50 scroll-mt-24">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">স্ট্যাটাস চেক করুন</h2>
-                <p class="text-gray-600 text-sm md:text-base">আপনার ফেসবুক নাম অথবা ইমেইল দিয়ে সার্চ দিন</p>
+                <h3 class="font-bold text-lg mb-2 text-gray-800">দৈনিক টাস্ক</h3>
+                <p class="text-gray-500 text-sm">অবশ্যই প্রতিদিনের রেকর্ড এবং রিপোর্ট উভয় একটি গুগল ড্রাইভ ফোল্ডারে আপলোড করে রাত বারোটার পূর্বে নির্ধারিত ফর্মে সাবমিট করতে হবে।</p>
             </div>
 
-            <form id="searchForm" onsubmit="handleSearch(event)" class="max-w-xl mx-auto border border-gray-200 rounded-2xl p-6 md:p-8 shadow-2xl bg-white relative overflow-hidden z-10">
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-blue-700"></div>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-gray-700 font-bold mb-2 text-sm">ফেসবুক নাম অথবা ইমেইল</label>
-                        <div class="relative">
-                            <i class="fas fa-search absolute left-4 top-4 text-gray-400"></i>
-                            <input type="text" id="searchInput" placeholder="Enter FB Name or Email..." required class="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition text-base">
-                        </div>
-                    </div>
-
-                    <button type="submit"
-    class="w-full bg-[#2196f3] hover:bg-[#1e88e5] text-white font-bold py-3.5 rounded-xl shadow-lg text-lg flex items-center justify-center transition duration-300 transform active:scale-95">
-    <span>চেক করুন</span> <i class="fas fa-search ml-2"></i>
-</button>
-
+            <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
+                    <i class="fas fa-ban text-xl"></i>
                 </div>
-            </form>
-
-            <div id="resultCard" class="hidden max-w-xl mx-auto mt-6 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden transform transition-all duration-500 ease-out translate-y-4 opacity-0">
-                
-                <div id="statusHeader" class="bg-gray-100 p-4 border-b border-gray-200 flex justify-between items-center">
-                    <span class="font-bold text-gray-600">আইডি: <span id="studentId">#AWT-000</span></span>
-                    <span id="statusBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-700">
-                        Active
-                    </span>
-                </div>
-
-                <div class="p-6">
-                    <h3 id="studentName" class="text-2xl font-bold text-gray-800 mb-1">Student Name</h3>
-                    <p id="studentEmail" class="text-gray-500 text-sm mb-6">student@email.com</p>
-
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-100">
-                            <p class="text-xs text-gray-500 uppercase font-semibold">সম্পন্ন টাস্ক</p>
-                            <p class="text-3xl font-bold text-blue-600 mt-1"><span id="completedTasks">0</span><span class="text-base text-gray-400">/14</span></p>
-                        </div>
-                        <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-100">
-    <p class="text-xs text-gray-500 uppercase font-semibold" id="remainingLabel">অবশিষ্ট দিন</p>
-    <p class="text-3xl font-bold text-purple-600 mt-1" id="remainingDays">0</p>
-</div>
-                    </div>
-
-                    <div class="mb-2">
-                        <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
-                            <span>অগ্রগতি</span>
-                            <span id="progressText">0%</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div id="progressBar" class="bg-blue-600 h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    
-                    <div id="suspensionMessage" class="hidden mt-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-200 flex items-start">
-                        <i class="fas fa-exclamation-circle mt-0.5 mr-2"></i>
-                        <span>দুর্ভাগ্যবশত, যথাযথ কার্যক্রম না থাকায় আপনাকে সাসপেন্ড করা হয়েছে। অনুগ্রহ করে এডমিনের সাথে যোগাযোগ করুন।</span>
-                    </div>
-
-                </div>
-            </div>
-            
-            <div id="notFoundMsg" class="hidden max-w-xl mx-auto mt-6 p-4 bg-red-100 text-red-700 text-center rounded-xl border border-red-200">
-                <i class="fas fa-times-circle mr-2"></i> কোনো তথ্য পাওয়া যায়নি। সঠিক নাম বা ইমেইল দিন।
+                <h3 class="font-bold text-lg mb-2 text-gray-800">সাসপেনশন পলিসি</h3>
+                <p class="text-gray-500 text-sm">রাত বারোটার পূর্বে বিনা অনুমতিতে টাক্স যথা নিয়মে ফর্মে সাবমিট না করলে অটোমেটিক সাসপেন্ড দেখানো হবে।</p>
             </div>
 
+            <div class="bg-white p-5 rounded-2xl shadow border border-gray-100 hover:border-blue-200 transition">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-600">
+                    <i class="fas fa-certificate text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-gray-800">সত্যায়িত</h3>
+                <p class="text-gray-500 text-sm">সফলভাবে ১৪ দিনের টাস্ক শেষ করলে এরিনা ওয়েব সিকিউরিটি কর্পোরেট ইন্টার্ন এর সত্যায়িত ছাত্র হিসেবে বিবেচিত হবে।</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="check-status" class="p-4 md:p-12 bg-blue-50 scroll-mt-24">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">স্ট্যাটাস চেক করুন</h2>
+            <p class="text-gray-600 text-sm md:text-base">আপনার ফেসবুক নাম অথবা ইমেইল দিয়ে সার্চ দিন</p>
         </div>
 
-        <footer class="bg-[#26272b] text-gray-400 text-center py-8 px-4 text-xs md:text-sm mt-10 rounded-t-3xl shadow-lg">
-    <h3 class="text-xl font-bold text-white mb-2">Arena Web Security</h3>
-    <p>&copy; 2026 Corporate Internship Program. All rights reserved.</p>
-</footer>
+        <form id="searchForm" onsubmit="handleSearch(event)" class="max-w-xl mx-auto border border-gray-200 rounded-2xl p-6 md:p-8 shadow-2xl bg-white relative overflow-hidden z-10">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-blue-700"></div>
 
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2 text-sm">ফেসবুক নাম অথবা ইমেইল</label>
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-4 top-4 text-gray-400"></i>
+                        <input type="text" id="searchInput" placeholder="Enter FB Name or Email..." required class="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-gray-50 focus:bg-white transition text-base">
+                    </div>
+                </div>
 
+                <button type="submit" class="w-full bg-[#2196f3] hover:bg-[#1e88e5] text-white font-bold py-3.5 rounded-xl shadow-lg text-lg flex items-center justify-center transition duration-300 transform active:scale-95">
+                    <span>চেক করুন</span> <i class="fas fa-search ml-2"></i>
+                </button>
+            </div>
+        </form>
+
+        <div id="resultCard" class="hidden max-w-xl mx-auto mt-6 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden transform transition-all duration-500 ease-out translate-y-4 opacity-0">
+            
+            <div id="statusHeader" class="bg-gray-100 p-4 border-b border-gray-200 flex justify-between items-center">
+                <span class="font-bold text-gray-600">আইডি: <span id="studentId">#AWT-000</span></span>
+                <span id="statusBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-700">
+                    Active
+                </span>
+            </div>
+
+            <div class="p-6">
+                <h3 id="studentName" class="text-2xl font-bold text-gray-800 mb-1">Student Name</h3>
+                <p id="studentEmail" class="text-gray-500 text-sm mb-6">student@email.com</p>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-100">
+                        <p class="text-xs text-gray-500 uppercase font-semibold">সম্পন্ন টাস্ক</p>
+                        <p class="text-3xl font-bold text-blue-600 mt-1"><span id="completedTasks">0</span><span class="text-base text-gray-400">/14</span></p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-100">
+                        <p class="text-xs text-gray-500 uppercase font-semibold" id="remainingLabel">অবশিষ্ট দিন</p>
+                        <p class="text-3xl font-bold text-purple-600 mt-1" id="remainingDays">0</p>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <div class="flex justify-between text-sm font-medium text-gray-600 mb-1">
+                        <span>অগ্রগতি</span>
+                        <span id="progressText">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div id="progressBar" class="bg-blue-600 h-3 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div id="suspensionMessage" class="hidden mt-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-200 flex items-start">
+                    <i class="fas fa-exclamation-circle mt-0.5 mr-2"></i>
+                    <span>দুর্ভাগ্যবশত, যথাযথ কার্যক্রম না থাকায় আপনাকে সাসপেন্ড করা হয়েছে। অনুগ্রহ করে এডমিনের সাথে যোগাযোগ করুন।</span>
+                </div>
+
+                <div id="perfImageContainer" class="hidden mt-6 border-t pt-4">
+                    <p class="text-xs text-gray-400 mb-2 uppercase font-bold text-center">Performance Chart</p>
+                    <img id="perfImage" src="" alt="Student Performance" class="w-full h-auto rounded-lg shadow-sm border border-gray-200">
+                </div>
+                </div>
+        </div>
+        
+        <div id="notFoundMsg" class="hidden max-w-xl mx-auto mt-6 p-4 bg-red-100 text-red-700 text-center rounded-xl border border-red-200">
+            <i class="fas fa-times-circle mr-2"></i> কোনো তথ্য পাওয়া যায়নি। সঠিক নাম বা ইমেইল দিন।
+        </div>
+    </div>
+
+    <footer class="bg-[#26272b] text-gray-400 text-center py-8 px-4 text-xs md:text-sm mt-10 rounded-t-3xl shadow-lg">
+        <h3 class="text-xl font-bold text-white mb-2">Arena Web Security</h3>
+        <p>&copy; 2026 Corporate Internship Program. All rights reserved.</p>
+    </footer>
 
     </div>
 
     <script src="logic-secure.js"></script>
-       
 </body>
 </html>
